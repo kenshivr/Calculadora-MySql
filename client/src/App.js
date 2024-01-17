@@ -1,8 +1,11 @@
 import './App.css';
+import { useState } from 'react'; 
 
 function App() {
 
   // Dinamic code
+
+  const [display, setDisplay] = useState('0');
 
   function click() 
   {
@@ -17,20 +20,23 @@ function App() {
 
         <div className="calculator">
 
-          <div className="container-buttom-changeMode-mic">
+          <div className="container-button-changeMode-mic">
             <button onClick={click} className="mic">
               <i className="fa-solid fa-microphone fa-lg"></i>
             </button>
             <div className="changeMode">
-              <i class="fa-solid fa-sun sun"></i>
-              <i class="fa-solid fa-moon moon"></i>
-              <div></div>
+              <i className="fa-solid fa-sun sun"></i>
+              <i className="fa-solid fa-moon moon"></i>
+              <div className="changeMode-button"></div>
             </div>
           </div>
 
-          <div className="container-pantalla"></div>
+          <div className="container-pantalla">
+            <div className="operacion">{display}</div>
+            <div className="resultado">{display}</div>
+          </div>
 
-          <div className="container-buttoms"></div>
+          <div className="container-buttons-calculator"></div>
 
         </div>
 

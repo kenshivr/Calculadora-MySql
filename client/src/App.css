@@ -1,9 +1,11 @@
+/* General styles */
+
 *
 {
-  --color-azul: #59A59D;
+  --color-azul: #27a499;
   --color-gris: #9CAAA8;
   --color-verde: #055F51;
-  --color-negro: #010505;
+  --color-negro: #010505; /*#0b1a20*/
   --color-blanco: #F4F4F4;
   --color-azulClaro: #8AD9D1;
   --color-grisClaro: #585F5F;
@@ -13,7 +15,11 @@
 {
   display: flex;
   text-align: center;
+  color: var(--color-blanco);
+  background-color: var(--color-azul);
 }
+
+/* Calculator styles */
 
 .container-calculator
 {
@@ -27,39 +33,127 @@
 
 .calculator
 {
-  height: 80%;
-  width: 400px;
+  height: 90%;
+  width: 313px;
   border-radius: 20px;
+  background-color: var(--color-negro);
+
   border: 1px solid green;
 }
 
-.container-buttom-changeMode-mic
+/* Styles the part top of calculator */
+
+i
+{
+  color: var(--color-blanco);
+}
+
+.container-button-changeMode-mic
 {
   width: 100%;
   height: 20%;
   display: flex;
-  justify-content: space-between;
   align-items: start;
   border-radius: 20px;
-  border: 1px solid black;
+  justify-content: space-between;
+}
+
+/* Styles of change mode */
+
+.changeMode
+{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px 20px 0 20px;
+
+  background-color: red;
 }
 
 .sun
 {
-  margin: 10px 10px 0 0;
+  margin: 2px 15px 2px 0;
 }
 
 .moon
 {
-  margin: 10px 10px 0 0;
+  margin: 2px;
 }
+
+.changeMode-button
+{
+  top: 9px;
+  left: 9px;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  border-radius: 10px;
+
+  background-color: green;
+}
+
+  /* Style mic */
 
 .mic
 {
+  width: 30px;
   border: none;
-  background-color: transparent;
+  height: 30px;
   margin: 10px 0 0 10px;
+  background-color: green;
+  border-radius: 10px 10px 10px 0;
 }
+
+/* Screen styles */
+
+.container-pantalla
+{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  /* background-color: green; */
+}
+
+.operacion
+{
+  width: 90%;
+  height: 30%;
+  display: flex;
+  align-items: end;
+  font-size: large;
+  padding-bottom: 7px;
+  justify-content: right;
+  color: var(--color-azul);
+}
+
+.resultado
+{
+  width: 90%;
+  height: 30%;
+  display: flex;
+  align-items: end;
+  font-size: xx-large;
+  justify-content: right;
+}
+
+/* Styles of container buttons calculator */
+.container-buttons-calculator
+{
+  width: 100%;
+  height: 60%;
+  border-radius: 20px;
+}
+
+
+/* Styles of buttons of historial */
 
 .container-buttons
 {
