@@ -1,23 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  // Dinamic code
+
+  function click() 
+  {
+    console.log("Click");
+  }
+
+  // HTML
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div className="container-calculator">
+
+        <div className="calculator">
+
+          <div className="container-buttom-changeMode-mic">
+            <button onClick={click} className="mic">
+              <i className="fa-solid fa-microphone fa-lg"></i>
+            </button>
+            <div className="changeMode">
+              <i class="fa-solid fa-sun sun"></i>
+              <i class="fa-solid fa-moon moon"></i>
+              <div></div>
+            </div>
+          </div>
+
+          <div className="container-pantalla"></div>
+
+          <div className="container-buttoms"></div>
+
+        </div>
+
+      </div>
+
+
+
+      <div className="container-buttons">
+        <button className="buttom-view buttom-historial">View Historial</button>
+        <button className="buttom-save buttom-historial">Save Historial</button>
+      </div>
+
     </div>
   );
 }
