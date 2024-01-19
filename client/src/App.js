@@ -1,18 +1,10 @@
 import './App.css';
+import Axios from "axios";
 import { useState } from 'react';
 
 function App() {
 
   // Dinamic code
-
-  // const down = {
-  //   borderBottom: '1px solid black'
-  // };
-
-  // const downrigh = {
-  //   // borderBottom: '1px solid black',
-  //   // borderRight: '1px solid black'
-  // };
 
   const [isModeDark, setIsModeDark] = useState(true);
   const [operacion, setOperacion] = useState('0');
@@ -50,6 +42,7 @@ function App() {
     try {
       setOperacion(resultado);
       setResultado(eval(resultado));
+      add();
     } catch {
       setResultado("Error!");
     }
@@ -63,6 +56,16 @@ function App() {
     }
 
     setIsModeDark(!isModeDark);
+  };
+
+  // Conexion BD
+
+  const add = () => {
+    Axios.post("http://localhost:3001/create", {
+      resultado: resultado
+    }).catch(function(error){
+      console.log("Error in add!");
+    })
   };
 
   // HTML
