@@ -1,15 +1,17 @@
 import './App.css';
 import Axios from "axios";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
   // Dinamic code
-
-  const [isModeDark, setIsModeDark] = useState(true);
+  // 600 la anchura de browser
   const [operacion, setOperacion] = useState('0');
   const [resultado, setResultado] = useState('0');
+  const [isModeDark, setIsModeDark] = useState(true);
   const [positionChangeMode, setPositionChangeMode] = useState('35px');
+  const [isViewHistorialClicked, setIsViewHistorialClicked] = useState(false);
+  const [historialContent, setHistorialContent] = useState([]);
 
   function ClickButton(text) 
   {
@@ -37,12 +39,13 @@ function App() {
     }
   };
 
-  function resolve()
+  const resolve = async () => 
   {
     try {
       setOperacion(resultado);
       setResultado(eval(resultado));
-      add();
+      await add();
+      await get();
     } catch {
       setResultado("Error!");
     }
@@ -58,15 +61,40 @@ function App() {
     setIsModeDark(!isModeDark);
   };
 
+  function clickViewHistorial()
+  {
+    setIsViewHistorialClicked(!isViewHistorialClicked);
+  }
+
+  function click()
+  {
+    console.log('hole');
+  }
+
   // Conexion BD
 
-  const add = () => {
-    Axios.post("http://localhost:3001/create", {
-      resultado: resultado
-    }).catch(function(error){
-      console.log("Error in add!");
-    })
+  const add = async () => {
+    try {
+      await Axios.post("http://localhost:3001/post", {
+        resultado: resultado
+      });
+    } catch (error) {
+      console.log("Error in add", error);
+    }
   };
+
+  const get = async () => {
+    try {
+      const response = await Axios.get("http://localhost:3001/get");
+      setHistorialContent(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    get();
+  }, []);
 
   // HTML
   return (
@@ -119,8 +147,27 @@ function App() {
       </div>
 
       <div className="container-buttons">
-        <button className={`buttom-view buttom-historial ${isModeDark ? 'backgroundAzul colorWhite' : 'backgroundAzulClaro colorBlack'}`}>View Historial</button>
-        <button className={`buttom-save buttom-historial ${isModeDark ? 'backgroundAzul colorWhite' : 'backgroundAzulClaro colorBlack'}`}>Save Historial</button>
+        <div 
+          onClick={clickViewHistorial} 
+          className={`buttom-view buttom-historial 
+          ${isModeDark ? 'backgroundAzul colorWhite' : 'backgroundAzulClaro colorBlack'} 
+          ${isViewHistorialClicked ? 'view-historial-clicked' : ''}`}
+        >
+          {isViewHistorialClicked ? (
+            <ul>
+              {historialContent.map((val, key) => (
+                <li key={val.id}>
+                  <i className='val-id'>{val.id}</i>
+                  <i className='val-operacion'>{val.operacion}</i>
+                </li>
+              ))}
+            </ul>
+          ) : (
+              'View Historial'
+              )
+          }
+        </div>
+      
       </div>
 
     </div>

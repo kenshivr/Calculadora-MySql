@@ -16,6 +16,7 @@
 {
   display: flex;
   text-align: center;
+  justify-content: center;
   background-color: var(--color-azul);
 }
 
@@ -227,8 +228,6 @@
   padding-top: 30px;
   align-items: center;
   flex-direction: column;
-
-  border: 1px solid black;
 }
 
 .buttom-historial
@@ -236,10 +235,64 @@
   border: none;
   width: 150px;
   transition: 1s;
-  font-weight: 500;
-  font-size: smaller;
+  font-size: small;
   margin-bottom: 20px;
   border-radius: 10px;
   padding: 4px 0 4px 0;
   box-shadow: 10px 10px 30px 0px var(--color-negro);
+}
+
+/* Styles when the brower is very small */
+
+@media (max-width: 885px) {
+  .App
+  {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .container-calculator
+  {
+    justify-content: center;
+  }
+
+  .container-buttons
+  {
+    width: 70%;
+    height: auto;
+  }
+}
+
+/* Styles when clicked the view historial button */
+
+.view-historial-clicked
+{
+  width: 70%;
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+
+.buttom-view li
+{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.buttom-view ul
+{
+  list-style: none;
+  padding: 0;
+}
+
+.val-id
+{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.val-operacion
+{
+  margin-right: 40px;
 }

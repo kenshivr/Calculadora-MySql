@@ -14,7 +14,7 @@ const db = mysql.createConnection({
     database: config.NAME
 });
 
-app.post("/create", (req,res) => {
+app.post("/post", (req,res) => {
     const resultado = req.body.resultado;
 
     db.query('INSERT INTO operaciones(operacion) VALUES (?)', [resultado],
@@ -31,20 +31,20 @@ app.post("/create", (req,res) => {
     // db.end();
 });
 
-// app.get("/empleados", (req,res) => {
+app.get("/get", (req,res) => {
 
-//     db.query('SELECT * FROM empleados',
-//     (err,result) => {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             res.send(result);
-//         }
-//     }
-//     );
+    db.query('SELECT * FROM operaciones',
+    (err,result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    }
+    );
 
-//     // db.end();
-// });
+    // db.end();
+});
 
 // app.put("/update", (req,res) => {
 //     const id = req.body.id;
