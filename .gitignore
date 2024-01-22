@@ -12,6 +12,7 @@ server/node_modules
 server/node_modules/
 server/package-lock.json
 server/package.json
+server/config.js
 
 client/.pnp
 client.pnp.js
