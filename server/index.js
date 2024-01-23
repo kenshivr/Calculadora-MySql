@@ -1,12 +1,14 @@
 const express = require("express"); // Es necesario primero requerir a expres antes de llamarlo 
 const app = express(); // en esta constante
-const cors = require("cors");
+const cors = require("cors"); // Para solicitudes de distintos dominios del de donde se esta desarrollando
 // const mysql = require("mysql");
-const { Pool } = require("pg");
+const { Pool } = require("pg"); // postgres
 const config = require("./config.js");
 
 app.use(cors());
 app.use(express.json());
+
+// Las consultas comentadas son para hacer lo mismo pero con mysql
 
 // const db = mysql.createConnection({
 //     host: config.HOST,
